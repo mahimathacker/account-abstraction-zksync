@@ -1,0 +1,12 @@
+To send a transaction you send a user operation 
+
+so offchain -> Google or any sign in -> Goes to the Alt mempool nodes (not to ethereum validator, so these alt mempool nodes gonna pay the gas fees and define params and 
+send the tansaction to the ethereum entryPoint.sol(ERC-4337))  
+
+Paymaster -> It is going to pay on your behalf 
+Signature aggregator -> Multi people can sign the transaction here  
+
+Account Abstraction by default in ZkSync 
+
+https://github.com/matter-labs/era-system-contracts/blob/main/contracts/DefaultAccount.sol -> With this contract, it is by default
+
