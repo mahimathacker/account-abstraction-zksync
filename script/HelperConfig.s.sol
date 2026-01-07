@@ -9,11 +9,13 @@ contract HelperConfig is Script {
 
     struct NetworkConfig {
         address entryPoint;
+        address account;
     }
 
     uint256 public constant ETH_SEPOLIA_CHAIN_ID =  11155111;
     uint256 public constant ZKSYNC_SEPOLIA_CHAIN_ID = 300;
     uint256 public constant LOCAL_CHAIN_ID = 31337;
+    address public constant BURNER_WALLET = 0xf240669b6AdeB433947D64e9Ea11b98FC6D888Ad;
 
     NetworkConfig public s_networkConfig;
 
@@ -25,7 +27,8 @@ constructor(){
 
  function getSepoliaEthConfig() public pure returns (NetworkConfig memory) {
         return NetworkConfig({
-            entryPoint: 0x5FF137D4b0FDCD49DcA30c7CF57E578a026d2789
+            entryPoint: 0x5FF137D4b0FDCD49DcA30c7CF57E578a026d2789,
+            account: BURNER_WALLET
         });
     }
 
@@ -33,7 +36,8 @@ constructor(){
         // ZKSync Era has native account abstraction; an external EntryPoint might not be used in the same way.
         // address(0) is used as a placeholder or to indicate reliance on native mechanisms.
         return NetworkConfig({
-            entryPoint: address(0)
+            entryPoint: address(0),
+            account: BURNER_WALLET
         });
     }
 
@@ -51,7 +55,8 @@ constructor(){
         // Fallback for this lesson (actual mock deployment not shown):
         NetworkConfig memory sepoliaConfig = getSepoliaEthConfig(); // Or a specific local mock entry point
         s_networkConfig = NetworkConfig({
-            entryPoint: sepoliaConfig.entryPoint// Replace with actual mock entry point if deployed
+            entryPoint: sepoliaConfig.entryPoint,// Replace with actual mock entry point if deployed
+            account: BURNER_WALLET
         });
         return s_networkConfig;
     }
